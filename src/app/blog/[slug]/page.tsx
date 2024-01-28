@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { getPost } from "@/lib/data";
 
 // FETCH DATA WITH AN API
-const getData = async (slug) => {
+const getData = async (slug: string) => {
   const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
 
   if (!res.ok) {
