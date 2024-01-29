@@ -6,7 +6,7 @@ import { User } from "./models";
 import bcrypt from "bcryptjs";
 import { authConfig } from "./auth.config";
 
-const login = async (credentials) => {
+const login = async (credentials: any) => {
   try {
     connectToDb();
     const user = await User.findOne({ username: credentials.username });
@@ -36,11 +36,11 @@ export const {
   ...authConfig,
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
     }),
     CredentialsProvider({
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         try {
           const user = await login(credentials);
           return user;
