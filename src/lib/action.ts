@@ -6,7 +6,7 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
-export const addPost = async (prevState, formData) => {
+export const addPost = async (prevState: any, formData: any) => {
   // const title = formData.get("title");
   // const desc = formData.get("desc");
   // const slug = formData.get("slug");
@@ -32,7 +32,7 @@ export const addPost = async (prevState, formData) => {
   }
 };
 
-export const deletePost = async (formData) => {
+export const deletePost = async (formData: any) => {
   const { id } = Object.fromEntries(formData);
 
   try {
@@ -48,7 +48,7 @@ export const deletePost = async (formData) => {
   }
 };
 
-export const addUser = async (prevState, formData) => {
+export const addUser = async (prevState: any, formData: any) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 
   try {
@@ -69,7 +69,7 @@ export const addUser = async (prevState, formData) => {
   }
 };
 
-export const deleteUser = async (formData) => {
+export const deleteUser = async (formData: any) => {
   const { id } = Object.fromEntries(formData);
 
   try {
@@ -95,7 +95,7 @@ export const handleLogout = async () => {
   await signOut();
 };
 
-export const register = async (previousState, formData) => {
+export const register = async (previousState: any, formData: any) => {
   const { username, email, password, img, passwordRepeat } =
     Object.fromEntries(formData);
 
@@ -132,12 +132,12 @@ export const register = async (previousState, formData) => {
   }
 };
 
-export const login = async (prevState, formData) => {
+export const login = async (prevState: any, formData: any) => {
   const { username, password } = Object.fromEntries(formData);
 
   try {
     await signIn("credentials", { username, password });
-  } catch (err) {
+  } catch (err: any) {
     console.log(err);
 
     if (err.message.includes("CredentialsSignin")) {
